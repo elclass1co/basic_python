@@ -21,12 +21,9 @@ USER_NUMB = int(input('Введите число: '))
 for i in range(len(a)):
     if a[i] == USER_NUMB:
         a.insert(i+1, USER_NUMB)
-        print(a)
         break
-if USER_NUMB < a[-1]:
-    a.append(USER_NUMB)
-    print(a)
-elif USER_NUMB > a[0]:
-    a.insert(0,USER_NUMB)
-    print(a)
-
+    elif USER_NUMB < a[-1]:
+        a.append(USER_NUMB)
+    elif USER_NUMB > a[0]:
+        a.insert(0,USER_NUMB)
+print(a)

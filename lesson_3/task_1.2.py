@@ -3,3 +3,9 @@
  год рождения, город проживания, email, телефон. Функция должна принимать параметры как именованные аргументы.
  Реализовать вывод данных о пользователе одной строкой.
 """
+
+
+def profile(name='Ivan', lastname='Ivanov', DoB=1999, city='Moscow', email='example@example.com', phoneNumb=79846573454):
+    print(f'Имя {name} фамилия {lastname}, {DoB} года рождения, проживает в городе {city}, email: {email}, номер телефона: {phoneNumb}')
+
+profile()

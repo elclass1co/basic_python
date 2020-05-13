@@ -9,3 +9,23 @@
 Например, в первом задании выводим целые числа, начиная с 3, а при достижении числа 10 завершаем цикл. 
 Во втором также необходимо предусмотреть условие, при котором повторение элементов списка будет прекращено.
 """
+from itertools import count
+from itertools import cycle
+
+
+n= int(input('Введите стартовое число: '))
+step = int(input('Введите шаг: '))
+
+for i in count(n, step):
+    print(i)
+    if i > 1500:
+        break
+
+
+my_list = ['ABC', False, 44]
+count = 0
+for i in cycle(my_list):
+    print(i)
+    count += 1
+    if count == 10:
+        break

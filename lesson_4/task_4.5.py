@@ -5,3 +5,12 @@
 
 Подсказка: использовать функцию reduce().
 """
+from functools import reduce
+
+def def_reduce(prev_i,i):
+    return prev_i * i
+
+a = [i for i in range(99, 1001) if i % 2 == 0]
+print(a)
+print(f'Результат перемножения всех элементов списка {reduce(def_reduce, a)}')
+

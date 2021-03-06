@@ -8,3 +8,21 @@
 # Сильно ли усложняется код функции при этом? Если в качестве аргумента передали код валюты,
 # которого нет в ответе, вернуть None.Можно ли сделать работу функции не зависящей от того,
 #  в каком регистре был передан аргумент? В качестве примера выведите курсы доллара и евро.
+
+from requests import get, utils
+
+response = get('http://www.cbr.ru/scripts/XML_daily.asp')
+encodings = utils.get_encoding_from_headers(response.headers)
+content = response.content.decode(encoding=encodings)
+
+
+# print(content)
+
+currency = input('ВВедите код валюты: ')
+
+if currency in content:
+    print(content.index(currency))
+
+    currency_slice = content[content.index(
+        currency):content.index(currency) + 100]
+    print(currency_slice)

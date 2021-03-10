@@ -18,3 +18,20 @@
 
 # ('Станислав', None)
 # Доказать, что вы создали именно генератор. Проверить его работу вплоть до истощения. Подумать, в каких ситуациях генератор даст эффект.
+
+
+from itertools import zip_longest
+
+
+tutors = ['Иван', 'Анастасия', 'Петр', 'Сергей', 'Дмитрий',
+          'Борис', 'Елена', 'Ольга', 'Никита', 'Станислав']
+
+klasses = ['9А', '7В', '9Б', '9В', '8Б', '10А', '10Б', '9А']
+
+tutuors_gen = ((name, klass) for name, klass in zip_longest(tutors, klasses))
+
+
+print(next(tutuors_gen))
+
+
+print(type(tutuors_gen))

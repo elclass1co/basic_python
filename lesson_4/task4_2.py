@@ -11,18 +11,24 @@
 
 from requests import get, utils
 
-response = get('http://www.cbr.ru/scripts/XML_daily.asp')
-encodings = utils.get_encoding_from_headers(response.headers)
-content = response.content.decode(encoding=encodings)
+
+def parse():
+    response = get('http://www.cbr.ru/scripts/XML_daily.asp')
+    encodings = utils.get_encoding_from_headers(response.headers)
+    content = response.content.decode(encoding=encodings).split("Valute")
+    return content
 
 
-# print(content)
+def currency_rates(currency, parse_data):
+    for i in content:
+        if currency in i:
+            i = i.split(">")
+            cur = i[-2].split("<")   # делим строку еще раз, получая число
+            a = float(cur[0].replace(",", "."))
+            return a
 
-currency = input('ВВедите код валюты: ')
 
-if currency in content:
-    print(content.index(currency))
+content = parse()
+currency = input('Введите код валюты: ').upper()
 
-    currency_slice = content[content.index(
-        currency):content.index(currency) + 100]
-    print(currency_slice)
+print(currency_rates(currency, content))

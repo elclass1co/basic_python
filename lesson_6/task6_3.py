@@ -15,3 +15,27 @@
 #
 # скалолазание,охота
 # горные лыжи
+from itertools import zip_longest
+
+with open('users.csv', 'r', encoding='utf-8') as u:
+    users = u.readlines()
+users_list = []
+hobby_list = []
+for i in users:
+    i = i.rstrip().replace(",", " ")
+    users_list.append(i)
+with open('hobby.csv', 'r', encoding='utf-8') as h:
+    hobby = h.readlines()
+for i in hobby:
+    i = i.rstrip()
+    hobby_list.append(i)
+
+
+user_hobby_dict = dict(zip_longest(users_list, hobby_list))
+
+with open('users_hobby.csv', 'w', encoding='utf-8') as u_h:
+    u_h.writelines(f'{user_hobby_dict}')
+
+# print(users_list)
+# print(hobby_list)
+print(user_hobby_dict)

@@ -18,4 +18,19 @@
 # ValueError: wrong val -5
 
 
+def val_checker(num):
+    if num < 0:
+        raise ValueError(f"wrong val {num}")
+    else:
+        def decor(func):
+            def wrapper(num):
+                return func(num)
+            return wrapper(num)
 
+
+@val_checker
+def calc_cub(num):
+    return num ** 3
+
+
+print(calc_cub(5))

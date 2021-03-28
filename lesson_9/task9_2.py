@@ -9,3 +9,24 @@
 #
 # Например: 20 м*5000 м*25 кг*5 см = 12500 т.
 #
+
+class Road:
+
+
+    def __init__(self, length, width):
+        self._length = length
+        self._width = width
+
+
+    def weight_count(self):
+        self.weight = self._width * self._length * 25 * 5
+        return f'{self.weight/1000} т'
+
+
+
+r = Road(20, 5000)
+print(r.weight_count())
+
+
+R = Road(10, 5000)
+print(R.weight_count())
